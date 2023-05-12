@@ -65,7 +65,7 @@ internal class Program
 
         //read config settings
         void readConfig() {
-            string[] config = File.ReadAllLines(localDir + @"\_Input\config.txt");
+            string[] config = File.ReadAllLines(localDir + @"\_Input\settings.cfg");
 
             foreach (string line in config) {
                 if (line.Trim() == "" || line.Trim().StartsWith("#")) continue;
