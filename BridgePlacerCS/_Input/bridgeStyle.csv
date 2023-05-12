@@ -1,0 +1,7 @@
+#name;pdxmesh;Red;Green;Blue
+#First element will be the default for any undefined colored in on the StyleMap.png
+bridge 01;bridge_01_mesh;100;50;150
+bridge indian;bridge_indian_mesh;200;150;50
+bridge mediterranean;bridge_mediterranean_mesh;50;150;150
+bridge mena;bridge_mena_mesh;0;100;0
+bridge western;bridge_western_mesh;200;50;50
