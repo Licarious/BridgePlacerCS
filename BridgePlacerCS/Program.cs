@@ -6,15 +6,12 @@ using System.Text;
 internal class Program
 {
     private static void Main(string[] args) {
-        //false: existing bridges should be given diffrent modles based on their location
-        //true: the bridges will be regenerated based on adjancies.csv
-        bool regenerate = false;
-
-
-
         //localDir move 3 directories up
         string localDir = Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).ToString()).ToString()).ToString();
         
+        bool regenerate = false;
+        readConfig();
+
         //read the province map
         Bitmap map = new(localDir + @"\_Input\map_data\provinces.png");
         int mapHeight = map.Height;
@@ -63,6 +60,24 @@ internal class Program
             }       
 
             return provinces;
+
+        }
+
+        //read config settings
+        void readConfig() {
+            string[] config = File.ReadAllLines(localDir + @"\_Input\config.txt");
+
+            foreach (string line in config) {
+                if (line.Trim() == "" || line.Trim().StartsWith("#")) continue;
+
+                if (line.Contains('=')) {
+                    //key value
+                    string[] split = line.Split('=');
+                    if (split[0].Trim() == "regenerate")
+                        regenerate = bool.Parse(split[1].Trim());
+                }
+
+            }
 
         }
 
